@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "username": "user",
+        "email": "user@gmail.com",
+        "password": "12345",
+        "role": "client",
+        "phoneNumber": "0822",
+        "address": "Malang"
+    }
+]
