@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "productId": 1,
+        "imgUrl": "https://imagedeleg1.lacoste.com/dw/image/v2/BGSW_PRD/on/demandware.static/-/Sites-master/en_ID/dwf096e68b/0100-LACSH9604_C31_24.jpg?imwidth=795&impolicy=product",
+        "createdAt": "2023-03-09 10:26:53.157 +0700",
+        "updatedAt": "2023-03-09 10:26:53.157 +0700"
+    },
+    {
+        "id": 2,
+        "productId": 2,
+        "imgUrl": "https://imagedeleg1.lacoste.com/dw/image/v2/BGSW_PRD/on/demandware.static/-/Sites-master/en_ID/dw9a498dcc/0100-LACAH0735_X0N_24.jpg?imwidth=795&impolicy=product",
+        "createdAt": "2023-03-09 10:26:53.157 +0700",
+        "updatedAt": "2023-03-09 10:26:53.157 +0700"
+    },
+    {
+        "id": 3,
+        "productId": 3,
+        "imgUrl": "https://imagedeleg1.lacoste.com/dw/image/v2/BGSW_PRD/on/demandware.static/-/Sites-master/en_ID/dwc19ffcfd/0100-LACAH1674_HHW_24.jpg?imwidth=795&impolicy=product",
+        "createdAt": "2023-03-09 10:26:53.157 +0700",
+        "updatedAt": "2023-03-09 10:26:53.157 +0700"
+    },
+    {
+        "id": 4,
+        "productId": 4,
+        "imgUrl": "https://imagedeleg1.lacoste.com/dw/image/v2/BGSW_PRD/on/demandware.static/-/Sites-master/en_ID/dw60ca50e9/0100-LAC40SMA0048_407_02.jpg?imwidth=795&impolicy=product",
+        "createdAt": "2023-03-09 10:26:53.157 +0700",
+        "updatedAt": "2023-03-09 10:26:53.157 +0700"
+    },
+    {
+        "id": 5,
+        "productId": 5,
+        "imgUrl": "https://imagedeleg1.lacoste.com/dw/image/v2/BGSW_PRD/on/demandware.static/-/Sites-master/en_ID/dw5eaf5209/0100-LAC45SMA0076_147_02.jpg?imwidth=795&impolicy=product",
+        "createdAt": "2023-03-09 10:26:53.157 +0700",
+        "updatedAt": "2023-03-09 10:26:53.157 +0700"
+    },
+    {
+        "id": 6,
+        "productId": 6,
+        "imgUrl": "https://imagedeleg1.lacoste.com/dw/image/v2/BGSW_PRD/on/demandware.static/-/Sites-master/en_ID/dw5551a250/0100-LAC45SMA0033_02H_02.jpg?imwidth=795&impolicy=product",
+        "createdAt": "2023-03-09 10:26:53.157 +0700",
+        "updatedAt": "2023-03-09 10:26:53.157 +0700"
+    }
+]
