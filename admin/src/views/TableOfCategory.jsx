@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategory, deleteCategory } from "../store/actions/actionCreator";
 export default function TableOfCategory() {
+  const navigate = useNavigate();
   const categories = useSelector((state) => {
     return state.categoryReducer.categories;
   });
@@ -30,9 +31,16 @@ export default function TableOfCategory() {
     <section className="bg-slate-100 rounded-2xl shadow-2xl px-10 pb-10">
       <div className="flex items-center justify-between p-5">
         <h1 className="font-extrabold text-4xl text-blue-400">Category</h1>
-        <Link className="btn btn-success" to={"/newCategory"}>
+        <button
+          onClick={() => {
+            navigate("/newCategory", {
+              state: { id: "", name: "" },
+            });
+          }}
+          className="btn btn-success"
+        >
           Add New Category
-        </Link>
+        </button>
       </div>
       <div className="overflow-x-auto border-t-2 border-solid border-slate-600">
         <table className="table table-zebra w-full">
@@ -57,12 +65,16 @@ export default function TableOfCategory() {
                   <td>{el.updatedAt}</td>
                   <td>
                     <div className="flex gap-5">
-                      <Link
-                        to={`/editCategory/${el.id}`}
+                      <button
+                        onClick={() => {
+                          navigate(`/editCategory/${el.id}`, {
+                            state: { id: el.id, name: el.name },
+                          });
+                        }}
                         className="btn btn-active btn-secondary"
                       >
                         Edit
-                      </Link>
+                      </button>
                       <button
                         className="btn btn-error"
                         onClick={(event) => handleDelete(event, el.id)}

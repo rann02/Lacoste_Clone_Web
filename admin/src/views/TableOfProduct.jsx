@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchProducts, deleteProduct } from "../store/actions/actionCreator";
-import ImagesPage from "../components/ImagesPage";
+// import ImagesPage from "../components/ImagesPage";
 
 export default function TableOfProduct() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => {
     return state.productReducer.products;
@@ -33,9 +34,23 @@ export default function TableOfProduct() {
     <section className="bg-slate-100 rounded-2xl shadow-2xl px-10 pb-10">
       <div className="flex items-center justify-between p-5">
         <h1 className="font-extrabold text-4xl text-blue-400">Product</h1>
-        <Link to={"/newProduct"} className="btn btn-success">
+        <button
+          onClick={() => {
+            navigate(`/newProduct`, {
+              state: {
+                slug: "",
+                name: "",
+                description: "",
+                price: "",
+                mainImg: "",
+                categoryId: "",
+              },
+            });
+          }}
+          className="btn btn-success"
+        >
           Add New Product
-        </Link>
+        </button>
       </div>
       <div className="w-full border-t-2 border-solid border-slate-600"></div>
       <div className="overflow-x-auto">
@@ -81,27 +96,30 @@ export default function TableOfProduct() {
                       className="modal cursor-pointer"
                     >
                       <label className="modal-box relative" htmlFor="">
-                        <h3 className="text-lg font-bold">
-                          Congratulations random Internet user!
-                        </h3>
-                        <p className="py-4">
-                          You've been selected for a chance to get one year of
-                          subscription to use Wikipedia for free!
-                        </p>
-                        <img src={el.mainImg}></img>
+                        <img alt={`ayam-index${idx}`}></img>
+                        {console.log(el.mainImg)}
                       </label>
                     </label>
-                    {console.log(idx)}
-                    <img src={el.mainImg}></img>
                   </td>
                   <td className="">
                     <div className="flex gap-5">
-                      <Link
-                        to={`/editProduct/${el.slug}`}
+                      <button
+                        onClick={() => {
+                          navigate(`/editProduct/${el.slug}`, {
+                            state: {
+                              slug: el.slug,
+                              name: el.name,
+                              description: el.description,
+                              price: el.price,
+                              mainImg: el.mainImg,
+                              categoryId: el.categoryId,
+                            },
+                          });
+                        }}
                         className="btn btn-active btn-secondary"
                       >
                         Edit
-                      </Link>
+                      </button>
                       <button
                         className="btn btn-error"
                         onClick={(event) => handleDelete(event, el.slug)}

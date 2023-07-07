@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postCategory,
@@ -10,11 +10,14 @@ import Swal from "sweetalert2";
 
 export default function FormAddCategory() {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { id, name } = state;
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const category = useSelector((state) => {
-    return state.categoryReducer.category;
-  });
+  // const { id } = useParams();
+  // console.log({ id, name });
+  // const category = useSelector((state) => {
+  //   return state.categoryReducer.category;
+  // });
   const [newCategory, setNewCategory] = useState({
     name: "",
   });
@@ -48,7 +51,7 @@ export default function FormAddCategory() {
           timer: 1500,
         });
       } else {
-        const data = await dispatch(postCategory(newCategory));
+        await dispatch(postCategory(newCategory));
         navigate("/category");
         Swal.fire({
           position: "top-end",
@@ -69,19 +72,19 @@ export default function FormAddCategory() {
     }
   };
 
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchCategoryById(id));
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (id) {
+  //     dispatch(fetchCategoryById(id));
+  //   }
+  // }, [id]);
 
   useEffect(() => {
-    if (id) {
-      setNewCategory(category);
+    if (id && name) {
+      setNewCategory({ name });
     }
-  }, [id, category]);
+  }, [id, name]);
 
-  console.log(newCategory);
+  // console.log(newCategory);
   return (
     <div className="flex justify-center items-center h-screen">
       <form

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import {
   fetchCategory,
   postProduct,
@@ -10,15 +10,19 @@ import {
 import Swal from "sweetalert2";
 
 export default function FormAddProduct() {
-  const { slug } = useParams();
+  // const { slug } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const categories = useSelector((state) => {
     return state.categoryReducer.categories;
   });
-  const product = useSelector((state) => {
-    return state.productReducer.product;
-  });
+  // const product = useSelector((state) => {
+  //   return state.productReducer.product;
+  // });
+
+  const { state } = useLocation();
+  const { slug, name, description, mainImg, categoryId, price } = state;
+  // console.log(state);
 
   const [dataAddProduct, setDataAddProduct] = useState({
     name: "",
@@ -116,21 +120,28 @@ export default function FormAddProduct() {
   };
 
   useEffect(() => {
+    dispatch(fetchCategory());
     if (slug) {
-      dispatch(fetchProductBySlug(slug));
+      // dispatch(fetchProductBySlug(slug));
+      setDataAddProduct({
+        name: name,
+        description: description,
+        price: price,
+        mainImg: mainImg,
+        categoryId: categoryId,
+        imgUrls: [],
+      });
       //   setDataAddProduct(product);
     }
   }, [slug]);
 
-  useEffect(() => {
-    dispatch(fetchCategory());
-    if (slug) {
-      //   dispatch(fetchProductBySlug(slug));
-      setDataAddProduct(product);
-    }
-  }, [slug, product]);
+  // useEffect(() => {
+  //   if (slug) {
+  //     //   dispatch(fetchProductBySlug(slug));
+  //   }
+  // }, [slug]);
 
-  console.log(product);
+  // console.log(product);
   // console.log({dataAddProduct, valueOfImage});
 
   return (

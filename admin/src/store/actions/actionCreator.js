@@ -1,7 +1,7 @@
 import { fetchProduct } from "./actionType";
 
 // const url = 'https://api.randy02.my.id'
-const url = "http://localhost:3000";
+const url = "https://lacoste-admin-production.up.railway.app";
 
 const fetchProductSuccess = (data) => {
   return {
